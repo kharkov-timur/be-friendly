@@ -1,0 +1,57 @@
+.my_posts {
+  padding-left: 20px;
+}
+
+.my_posts h3 {
+  font-size: 35px;
+  line-height: 45px;
+}
+
+.new_posts {
+  margin: 0 0 40px 0;
+  padding-right: 80px;
+}
+
+.news_field {
+  display: block;
+  width: 100%;
+  height: 85px;
+  background-color: #E6EEEA;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  font-size: 26px;
+  line-height: 33px;
+  margin-bottom: 20px;
+  resize: none;
+}
+
+.news_field:hover {
+  outline: 1px solid #13CE66;
+}
+
+.news_field:active {
+  outline: inherit;
+}
+
+.news_field::placeholder {
+  color: #B0B8C2;
+}
+
+.button_send {
+  display: block;
+  background-color: #0CB658;
+  width: 162px;
+  height: 36px;
+  font-size: 26px;
+  line-height: 26px;
+  text-align: left;
+  color: #fff;
+  padding-left: 20px;
+  border: none;
+  margin: 0 0 0 auto;
+  cursor: pointer;
+}
+
+.button_send:hover {
+  background-color: #13CE66;
+}

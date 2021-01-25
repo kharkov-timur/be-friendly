@@ -1,0 +1,27 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: #13CE66;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.item {
+  color: #fff;
+  font-size: 34px;
+  line-height: 44px;
+}
+
+.item {
+  color: #fff;
+}
+
+.item.active {
+  color: gold;
+}
+
+

@@ -1,0 +1,49 @@
+.posts {
+  margin-bottom: 20px;
+}
+
+.item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.post_like {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 30px;
+  line-height: 30px;
+  color: red;
+  cursor: pointer;
+}
+
+.post_like:hover {
+  transform: scale(1.3);
+  transition: all .3s ease;
+}
+
+.post_like span {
+  font-size: 20px;
+  color: #47525E;
+}
+
+.post_img {
+  width: 58px;
+  height: 58px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.post_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.item_text {
+  font-size: 26px;
+  line-height: 33px;
+  margin-left: 30px;
+}

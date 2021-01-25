@@ -1,0 +1,39 @@
+h3 {
+  font-size: 35px;
+  line-height: 45px;
+  margin-top: 0;
+  margin-bottom: 37px;
+}
+
+.bg_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.bg_image {
+  height: 224px;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.user_info {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.avatar_img {
+  margin-right: 45px;
+}
+
+.avatar_img img {
+  width: 175px;
+  height: 175px;
+  object-fit: fill;
+}
+
+.description {
+  font-size: 26px;
+  line-height: 33px;
+}
