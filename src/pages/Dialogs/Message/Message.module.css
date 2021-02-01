@@ -1,0 +1,53 @@
+.message_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.message_user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message_avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.message_avatar img {
+  width: 100%;
+  object-fit: fill;
+}
+
+.message_nickname {
+
+}
+
+.message_text {
+  position: relative;
+  padding-left: 25px;
+}
+
+.message_text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 15px solid transparent;
+  border-right: 20px solid #C0CCDA;
+}
+
+.message_text_wrapper {
+  border: 2px solid #C0CCDA;
+  border-radius: 10px;
+  width: 278px;
+  height: 89px;
+  padding: 19px;
+  margin-left: 10px;
+}
+
