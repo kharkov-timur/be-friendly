@@ -1,11 +1,11 @@
-import classes from './Messages.module.css'
+import classes from './News.module.css'
 
-const Messages = (props) => {
+const News = (props) => {
   return (
     <div className={classes.content}>
-      Messages
+      News
     </div>
   )
 }
 
-export default Messages
+export default News

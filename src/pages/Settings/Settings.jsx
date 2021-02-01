@@ -1,11 +1,11 @@
-import classes from './Music.module.css'
+import classes from './Settings.module.css'
 
-const Music = (props) => {
+const Settings = (props) => {
   return (
     <div className={classes.content}>
-      Music
+      Settings
     </div>
   )
 }
 
-export default Music
+export default Settings
