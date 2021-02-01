@@ -1,9 +1,6 @@
-import {
-  SEND_MESSAGE,
-  ADD_POST,
-  UPDATE_MESSAGE,
-  UPDATE_POST
-} from './action'
+import profileReducer from './profileReducer'
+import messageReducer from './messageReducer'
+import sidebarReducer from './sidebarReducer'
 
 let store = {
   _state: {
@@ -94,38 +91,6 @@ let store = {
   _callSubscriber() {
     console.log('State changed')
   },
-  _addPost() {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      src: 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png',
-      likesCount: 0
-    }
-
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ''
-    this._callSubscriber(this._state)
-  },
-  _updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText
-    this._callSubscriber(this._state)
-  },
-  _addMessage() {
-    let newMessage = {
-      id: 5,
-      message: this._state.messagesPage.newMessageText,
-      src: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
-      likeCount: 0,
-    }
-
-    this._state.messagesPage.messages.push(newMessage)
-    this._state.messagesPage.newMessageText = ''
-    this._callSubscriber(this._state)
-  },
-  _updateNewMessage(newMessage) {
-    this._state.messagesPage.newMessageText = newMessage
-    this._callSubscriber(this._state)
-  },
   subscribe(observer) {
     this._callSubscriber = observer
   },
@@ -134,38 +99,13 @@ let store = {
   },
 
   dispatch(action) {
-    switch (action.type) {
-      case ADD_POST:
-        return this._addPost()
-      case UPDATE_POST:
-        return this._updateNewPostText(action.newText)
-      case SEND_MESSAGE:
-        return this._addMessage()
-      case UPDATE_MESSAGE:
-        return this._updateNewMessage(action.newMessage)
-      default:
-        return this.state
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.messagesPage = messageReducer(this._state.messagesPage, action)
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+    this._callSubscriber(this._state)
   }
 }
-
-export const addPostAction = () => ({
-  type: ADD_POST
-})
-
-export const updatePostAction = (text) => ({
-  type: UPDATE_POST,
-  newText: text
-})
-
-export const sendMessageAction = () => ({
-  type: SEND_MESSAGE
-})
-
-export const updateMessageAction = (message) => ({
-  type: UPDATE_MESSAGE,
-  newMessage: message
-})
 
 export default store
 window.state = store
