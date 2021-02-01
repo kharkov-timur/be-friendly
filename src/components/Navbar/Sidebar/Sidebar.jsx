@@ -4,17 +4,21 @@ import classes from './Sidebar.module.css'
 const Sidebar = (props) => {
 
   let friendsElement = props.state
-    .map(friend => {
-      return (
-        <NavLink to={`/sidebar/${friend.id}`} key={friend.id} className={classes.sidebar_item}>
-          <div className={classes.item_round} >
+    .map(friend => {      return (
+        <NavLink
+          to={`/sidebar/${friend.id}`}
+          key={friend.id}
+          className={classes.sidebar_item}
+        >
+          <div className={classes.item_round}>
             <img src={friend.src} alt="profile" />
           </div>
           <span className={classes.item_text}>
             {friend.name}
           </span>
         </NavLink>
-      )    })
+      )
+    })
 
   return (
     <div className={classes.sidebar}>
