@@ -97,7 +97,6 @@ let store = {
   getState() {
     return this._state
   },
-
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.messagesPage = messageReducer(this._state.messagesPage, action)
@@ -108,4 +107,3 @@ let store = {
 }
 
 export default store
-window.state = store

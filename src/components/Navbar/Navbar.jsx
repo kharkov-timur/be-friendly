@@ -1,10 +1,10 @@
 import {NavLink} from 'react-router-dom'
 import Sidebar from './Sidebar/Sidebar'
+import StoreContext from '../../StoreContext'
 
 import classes from './Navbar.module.css'
 
-const Navbar = (props) => {
-
+const Navbar = () => {
   return (
     <nav className={classes.nav}>
       <div className={classes.item}>
@@ -23,7 +23,15 @@ const Navbar = (props) => {
         <NavLink to='/settings' activeClassName={classes.active}>Settings</NavLink>
       </div>
 
-      <Sidebar state={props.state}/>
+      <StoreContext.Consumer>
+        {store => {
+          let state = store.getState().sidebar
+
+          return (
+            <Sidebar state={state} />
+          )
+        }}
+      </StoreContext.Consumer>
     </nav>
   )
 }

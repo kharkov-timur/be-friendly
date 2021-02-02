@@ -3,10 +3,12 @@ import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 
 import classes from './Dialogs.module.css'
-import {sendMessageAction, updateMessageAction} from '../../redux/messageReducer';
 
 const Dialogs = (props) => {
-  let dialogsElement = props.messagePage.dialogs
+  let state = props.messagePage
+  let newMessageText = state.newMessageText
+
+  let dialogsElement = state.dialogs
     .map(dialog => {
       return (
         <DialogItem
@@ -17,7 +19,7 @@ const Dialogs = (props) => {
       )
     })
 
-  let messagesElement = props.messagePage.messages
+  let messagesElement = state.messages
     .map(message => {
         return (
           <Message
@@ -31,13 +33,13 @@ const Dialogs = (props) => {
       }
     )
 
-  const onMessageChange = (event) => {
-    let message = event.target.value
-    props.dispatch(updateMessageAction(message))
+  const onSendMessageClick = () => {
+    props.sendMessage()
   }
 
-  const sendMessage = () => {
-    props.dispatch(sendMessageAction())
+  const onMessageChange = (event) => {
+    let message = event.target.value
+    props.updateNewMessageBody(message)
   }
 
   return (
@@ -54,11 +56,11 @@ const Dialogs = (props) => {
               <textarea
                 onChange={onMessageChange}
                 placeholder='new message'
-                value={props.messagePage.newMessageText}
+                value={newMessageText}
               />
             </div>
             <button
-              onClick={sendMessage}
+              onClick={onSendMessageClick}
               className={classes.btn_message}
             >
               Send message
