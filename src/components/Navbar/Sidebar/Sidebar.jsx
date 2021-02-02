@@ -2,9 +2,9 @@ import {NavLink} from 'react-router-dom'
 import classes from './Sidebar.module.css'
 
 const Sidebar = (props) => {
-
-  let friendsElement = props.state
-    .map(friend => {      return (
+  let friendsElement = props.state.sidebar
+    .map(friend => {
+      return (
         <NavLink
           to={`/sidebar/${friend.id}`}
           key={friend.id}
