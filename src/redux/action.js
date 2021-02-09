@@ -1,4 +1,12 @@
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
+export const SET_USER_PROFILE = 'SET_USER_PROFILE'
+
 export const SEND_MESSAGE = 'ADD_MESSAGE'
 export const UPDATE_MESSAGE = 'UPDATE_MESSAGE'
+
+export const FOLLOW_STATUS = 'FOLLOW_STATUS'
+export const SET_USERS = 'SET_USERS'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+export const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
+export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'

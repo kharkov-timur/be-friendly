@@ -7,8 +7,7 @@ const Profile = (props) => {
   return (
     <div className={classes.content}>
       <ProfileInfo
-        nickname='Timur'
-        birthDay='22 february'
+        profile={props.profile}
       />
       <MyPostsContainer />
     </div>

@@ -1,7 +1,12 @@
 import React, {Fragment} from 'react'
 import classes from './ProfileInfo.module.css'
+import Preloader from '../../../components/common/Preloader/Preloader'
 
 const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />
+  }
+
   return (
     <Fragment>
       <div className={classes.bg_image}>
@@ -14,16 +19,34 @@ const ProfileInfo = (props) => {
       <div className={classes.user_info}>
         <div className={classes.avatar_img}>
           <img
-            src="https://png.pngtree.com/element_our/20190530/ourlarge/pngtree-520-couple-avatar-boy-avatar-little-dinosaur-cartoon-cute-image_1263411.jpg"
+            src={props.profile.photos.small}
             alt="avatar"
           />
         </div>
 
         <div>
-          <h3>{props.nickname}</h3>
+          <h3>{props.profile.fullName}</h3>
           <div className={classes.description}>
             <div>
-              Date of birth: <span>{props.birthDay}</span>
+              About me: <span>{props.profile.aboutMe}</span>
+            </div>
+            <div>
+              Job status:
+              <span>
+                {props.profile.lookingForAJob ? ' :-)' : ' :-('}
+              </span>
+              <br/>
+              <span>
+                {props.profile.lookingForAJobDescription}
+              </span>
+
+            </div>
+            <div>
+              Date of birth:
+              <span>{!props.profile.birthDay
+                ? props.profile.birthDay
+                : ''}
+              </span>
             </div>
             <div>
               City: <span>Minsk</span>
@@ -32,7 +55,13 @@ const ProfileInfo = (props) => {
               Education: <span>BSU'11</span>
             </div>
             <div>
-              Web Site: <span>https://it-kamasutra.com</span>
+              Web Site: <span>{!props.profile.contacts.website}</span>
+            </div>
+            <div>
+              Instagram: <span>{props.profile.contacts.instagram}</span>
+            </div>
+            <div>
+              GitHub: <span>{props.profile.contacts.github}</span>
             </div>
           </div>
         </div>
