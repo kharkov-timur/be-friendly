@@ -7,7 +7,7 @@ const MyPosts = (props) => {
     .map(post => {
       return (
         <Post
-          key={post.message + post.id}
+          key={post.id}
           id={post.id}
           src={post.src}
           message={post.message}
@@ -28,7 +28,6 @@ const MyPosts = (props) => {
   return (
     <div className={classes.my_posts}>
       <h3>My posts</h3>
-
       <div className={classes.new_posts}>
         <textarea
           onChange={onPostChange}

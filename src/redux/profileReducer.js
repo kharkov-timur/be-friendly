@@ -1,4 +1,4 @@
-import {ADD_POST, UPDATE_POST} from './action'
+import {ADD_POST, SET_USER_PROFILE, UPDATE_POST} from './action'
 
 let initialState = {
   posts: [
@@ -27,24 +27,36 @@ let initialState = {
       likesCount: 11
     }
   ],
-  newPostText: ''
+  newPostText: '',
+  profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
+
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let newPost = {
         id: 5,
         message: state.newPostText,
         src: 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png',
         likesCount: 0
       }
-      state.posts.push(newPost)
-      state.newPostText = ''
-      return state
+      return {
+        ...state,
+        posts: [...state.posts, newPost],
+        newPostText: ''
+      }
+    }
     case UPDATE_POST:
-      state.newPostText = action.newText
-      return state
+      return {
+        ...state,
+        newPostText: action.newText
+      }
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      }
     default:
       return state
   }
@@ -57,6 +69,11 @@ export const addPostAction = () => ({
 export const updatePostAction = (text) => ({
   type: UPDATE_POST,
   newText: text
+})
+
+export const setUsersProfile = (profile) => ({
+  type: SET_USER_PROFILE,
+  profile
 })
 
 export default profileReducer
