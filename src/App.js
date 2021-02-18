@@ -1,5 +1,5 @@
 import {Switch, Route} from 'react-router-dom'
-import Header from './components/Header/Header'
+import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
 import ProfileContainer from './pages/Profile/ProfileContainer'
 import DialogsContainer from './pages/Dialogs/DialogsContainer'
@@ -13,23 +13,22 @@ import './App.css'
 const App = () => {
   return (
     <div className='app-wrapper'>
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className='app-wrapper-content'>
         <Switch>
-          <Route exact
-                 path='/profile'
-                 render={() => <ProfileContainer />}/>
+          <Route path='/profile/:userId?'
+                 render={() => <ProfileContainer />} />
           <Route path='/messages'
-                 render={() => <DialogsContainer />}/>
+                 render={() => <DialogsContainer />} />
           <Route path='/users'
-                 render={() => <UsersContainer />}/>
+                 render={() => <UsersContainer />} />
           <Route path='/news'
-                 render={() => <News />}/>
+                 render={() => <News />} />
           <Route path='/music'
-                 render={() => <Music />}/>
+                 render={() => <Music />} />
           <Route path='/settings'
-                 render={() => <Settings />}/>
+                 render={() => <Settings />} />
         </Switch>
       </div>
     </div>

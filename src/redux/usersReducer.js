@@ -1,29 +1,50 @@
 import {
-  FOLLOW_STATUS,
+  FOLLOW,
   SET_CURRENT_PAGE,
   SET_TOTAL_COUNT,
-  SET_USERS, TOGGLE_IS_FETCHING
+  SET_USERS,
+  TOGGLE_IS_FETCHING,
+  TOGGLE_IS_FOLLOWING_PROGRESS,
+  UNFOLLOW
 } from './action'
 
 let initialState = {
   users: [],
-  pageSize: 50,
+  pageSize: 20,
   totalUsersCount: 0,
   currentPage: 1,
-  isFetching: false
+  isFetching: false,
+  followingInProgress: []
 }
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FOLLOW_STATUS:
+    case FOLLOW:
       return {
         ...state,
         users: state.users.map(user => {
           if (user.id === action.userId) {
-            return {...user, followed: !user.followed}
+            return {...user, followed: true}
           }
           return user
         })
+      }
+    case UNFOLLOW:
+      return {
+        ...state,
+        users: state.users.map(user => {
+          if (user.id === action.userId) {
+            return {...user, followed: false}
+          }
+          return user
+        })
+      }
+    case TOGGLE_IS_FOLLOWING_PROGRESS:
+      return{
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userId]
+          : state.followingInProgress.filter(id => id !== action.userId)
       }
     case SET_USERS:
       return {...state, users: [...action.users]}
@@ -39,7 +60,18 @@ const usersReducer = (state = initialState, action) => {
 }
 
 export const follow = (userId) => ({
-  type: FOLLOW_STATUS,
+  type: FOLLOW,
+  userId
+})
+
+export const unfollow = (userId) => ({
+  type: UNFOLLOW,
+  userId
+})
+
+export const toggleIsFollowingProgress = (isFetching , userId) => ({
+  type: TOGGLE_IS_FOLLOWING_PROGRESS,
+  isFetching,
   userId
 })
 
