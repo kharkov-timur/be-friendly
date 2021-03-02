@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react'
 import classes from './ProfileInfo.module.css'
 import Preloader from '../../../components/common/Preloader/Preloader'
+import userPhoto from '../../../assets/images/Raster.jpg'
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -19,13 +21,18 @@ const ProfileInfo = (props) => {
       <div className={classes.user_info}>
         <div className={classes.avatar_img}>
           <img
-            src={props.profile.photos.small}
+            src={props.profile.photos.small !== null
+              ? props.profile.photos.small
+              : userPhoto}
             alt="avatar"
           />
         </div>
 
         <div>
-          <h3>{props.profile.fullName}</h3>
+          <div className={classes.profile_status}>
+            <h3>{props.profile.fullName}</h3>
+            <ProfileStatus props={props}/>
+          </div>
           <div className={classes.description}>
             <div>
               About me: <span>{props.profile.aboutMe}</span>
@@ -35,7 +42,7 @@ const ProfileInfo = (props) => {
               <span>
                 {props.profile.lookingForAJob ? ' :-)' : ' :-('}
               </span>
-              <br/>
+              <br />
               <span>
                 {props.profile.lookingForAJobDescription}
               </span>
