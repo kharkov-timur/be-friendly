@@ -1,4 +1,6 @@
 import classes from './Settings.module.css'
+import {compose} from 'redux';
+import {withAuthRedirect} from '../../hoc/WithAuthRedirect';
 
 const Settings = (props) => {
   return (
@@ -8,4 +10,6 @@ const Settings = (props) => {
   )
 }
 
-export default Settings
+export default compose(
+  withAuthRedirect
+)(Settings)

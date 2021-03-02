@@ -1,7 +1,3 @@
-import profileReducer from './profileReducer'
-import messageReducer from './messageReducer'
-import sidebarReducer from './sidebarReducer'
-
 let store = {
   _state: {
     profilePage: {
@@ -87,22 +83,6 @@ let store = {
         src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNiQ63wXcfaE7w3wFexsqcuvwGwevpQHfEvw&usqp=CAU'
       },
     ]
-  },
-  _callSubscriber() {
-    console.log('State changed')
-  },
-  subscribe(observer) {
-    this._callSubscriber = observer
-  },
-  getState() {
-    return this._state
-  },
-  dispatch(action) {
-    this._state.profilePage = profileReducer(this._state.profilePage, action)
-    this._state.messagesPage = messageReducer(this._state.messagesPage, action)
-    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-
-    this._callSubscriber(this._state)
   }
 }
 

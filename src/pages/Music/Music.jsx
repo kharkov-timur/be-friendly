@@ -1,4 +1,6 @@
 import classes from './Music.module.css'
+import {withAuthRedirect} from '../../hoc/WithAuthRedirect'
+import {compose} from 'redux'
 
 const Music = (props) => {
   return (
@@ -8,4 +10,6 @@ const Music = (props) => {
   )
 }
 
-export default Music
+export default compose(
+  withAuthRedirect
+)(Music)

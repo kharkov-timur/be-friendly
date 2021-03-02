@@ -1,4 +1,6 @@
 import classes from './News.module.css'
+import {compose} from 'redux'
+import {withAuthRedirect} from '../../hoc/WithAuthRedirect'
 
 const News = (props) => {
   return (
@@ -8,4 +10,6 @@ const News = (props) => {
   )
 }
 
-export default News
+export default compose(
+  withAuthRedirect
+)(News)

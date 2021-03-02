@@ -12,41 +12,27 @@ export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 10) {
     return instance
       .get(`users?page=${currentPage}&count=${pageSize}`)
-      .then(res => res.data)
-      .catch(e => {
-        console.log(e)
-      });
+  },
+
+  userFollow(userId) {
+    return instance
+      .post(`follow/${userId}`)
+  },
+
+  userUnfollow(userId) {
+    return instance
+      .delete(`follow/${userId}`)
+  },
+
+  getProfile(userId) {
+    return instance
+      .get(`profile/${userId}`)
   }
 }
 
-export const authUser = () => {
-  return instance
-    .get(`auth/me`)
-    .then(res => res.data)
-    .catch(e => {
-      console.log(e)
-    });
+export const authAPI = {
+  authUser() {
+    return instance
+      .get(`auth/me`)
+  }
 }
-
-export const userFollow = (userId) => {
-  return instance
-    .post(`follow/${userId}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(e => {
-      console.log(e)
-    });
-}
-
-export const userUnfollow = (userId) => {
-  return instance
-    .delete(`follow/${userId}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(e => {
-      console.log(e)
-    });
-}
-
