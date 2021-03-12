@@ -1,11 +1,13 @@
+export const SET_INITIALIZED_SUCCESS = 'SET_INITIALIZED_SUCCESS'
+
 export const ADD_POST = 'ADD_POST'
-export const UPDATE_POST = 'UPDATE_POST'
 export const SET_USER_PROFILE = 'SET_USER_PROFILE'
+
+export const SET_STATUS = 'SET_STATUS'
 
 export const SET_USER_DATA = 'SET_USER_DATA'
 
 export const SEND_MESSAGE = 'ADD_MESSAGE'
-export const UPDATE_MESSAGE = 'UPDATE_MESSAGE'
 
 export const FOLLOW = 'FOLLOW'
 export const UNFOLLOW = 'UNFOLLOW'

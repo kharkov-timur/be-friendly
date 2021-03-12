@@ -96,12 +96,12 @@ export const toggleIsFetching = (isFetching) => ({
   isFetching
 })
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true))
-    dispatch(setCurrentPage(currentPage))
+    dispatch(setCurrentPage(page))
 
-    usersAPI.getUsers(currentPage, pageSize)
+    usersAPI.getUsers(page, pageSize)
       .then(res => res.data)
       .then(data => {
         dispatch(toggleIsFetching(false))
