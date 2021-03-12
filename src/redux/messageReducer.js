@@ -1,4 +1,4 @@
-import {SEND_MESSAGE, UPDATE_MESSAGE} from './action'
+import {SEND_MESSAGE} from './action'
 
 let initialState = {
   dialogs: [
@@ -34,42 +34,31 @@ let initialState = {
       src: 'https://play-lh.googleusercontent.com/-cyXF2_vs8LjdVY74AZTDL7TTkPPZnQFEX98axY2LQtDy-r6_NbW77VAd5WRYJ9_dg',
       likeCount: 25,
     },
-  ],
-  newMessageText: ''
+  ]
 }
 
 const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       let newMessage = {
-        id: 5,
-        message: state.newMessageText,
+        id: state.messages.length + 1,
+        message: action.newMessageText,
         src: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg',
         likeCount: 0,
       }
 
       return {
         ...state,
-        messages: [...state.messages, newMessage],
-        newMessageText: '',
-      }
-    case UPDATE_MESSAGE:
-      return {
-        ...state,
-        newMessageText: action.newMessage
+        messages: [...state.messages, newMessage]
       }
     default:
       return state
   }
 }
 
-export const sendMessageAction = () => ({
-  type: SEND_MESSAGE
-})
-
-export const updateMessageAction = (message) => ({
-  type: UPDATE_MESSAGE,
-  newMessage: message
+export const sendMessageAction = (newMessageText) => ({
+  type: SEND_MESSAGE,
+  newMessageText
 })
 
 export default messageReducer

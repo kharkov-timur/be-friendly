@@ -1,7 +1,4 @@
-import {
-  addPostAction,
-  updatePostAction
-} from '../../../redux/profileReducer'
+import {addPostAction} from '../../../redux/profileReducer'
 import MyPosts from './MyPosts'
 import {connect} from 'react-redux'
 
@@ -14,15 +11,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPost: () => {
-      dispatch(addPostAction())
-    },
-    updateNewPostText: (text) => {
-      dispatch(updatePostAction(text))
+    addPost: (newText) => {
+      dispatch(addPostAction(newText))
     }
   }
 }
 
-const PostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
-
-export default PostContainer
+export default connect(mapStateToProps, mapDispatchToProps)(MyPosts)
